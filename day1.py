@@ -37,13 +37,14 @@ for line in f:
     numlist.append(int(clean_num))
 
 
-def addsupto(numlist, nonums, total):
+def addsupto(numlist, nonums, total):git
 
     perms = permutations(numlist, nonums)
     for perm in perms:
         if sum(perm) == total:
             print(perm)
             return reduce(lambda x,y: x*y, perm)
-print(numlist)
-print(addsupto(numlist, 2, 2020))
-print(addsupto(numlist, 3, 2020))
+
+
+part1 = addsupto(numlist, 2, 2020)
+part2 = addsupto(numlist, 3, 2020)
