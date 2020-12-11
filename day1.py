@@ -44,6 +44,6 @@ def addsupto(numlist, nonums, total):
         if sum(perm) == total:
             print(perm)
             return reduce(lambda x,y: x*y, perm)
-
+print(numlist)
 print(addsupto(numlist, 2, 2020))
 print(addsupto(numlist, 3, 2020))
