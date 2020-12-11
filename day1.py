@@ -37,7 +37,7 @@ for line in f:
     numlist.append(int(clean_num))
 
 
-def addsupto(numlist, nonums, total):git
+def addsupto(numlist, nonums, total):
 
     perms = permutations(numlist, nonums)
     for perm in perms:
