@@ -117,18 +117,21 @@ passports = content.split("\n\n")
 cleaned_passports = []
 index = 0
 passports_numbered = {}
+fail = 0
 
+def create_passport_dict(passports):
+    all = []
+    for passport in passports:
+        passport = passport.replace("\n", " ").replace(" ", ",")
+        entry = passport.split(",")
+        passport_dict = {}
+        for pair in entry:
+            details = pair.split(":")
+            passport_dict[details[0]] = details[1]
+        all.append(passport_dict)
+    return all
 
-# part one
-for passport in passports:
-    passport = passport.replace("\n", " ").replace(" ", ",")
-    entry = passport.split(",")
-    passport_dict = {}
-    for pair in entry:
-        details = pair.split(":")
-        passport_dict[details[0]] = details[1]
-    cleaned_passports.append(passport_dict)
-
+cleaned_passports = create_passport_dict(passports)
 for passport in cleaned_passports:
     if len(passport) < 7:
         fail += 1
@@ -137,16 +140,10 @@ for passport in cleaned_passports:
             fail += 1
 
 valid = len(cleaned_passports) - fail
-
+print(valid)
 
 #part 2
-for passport in passports:
-    passport = passport.replace("\n", " ").replace(" ", ",")
-    entry = passport.split(",")
-    passport_dict = {}
-    for pair in entry:
-        details = pair.split(":")
-        passport_dict[details[0]] = details[1]
+for passport_dict in cleaned_passports:
     try:
         passport_obj = Passport(**passport_dict)
     except ValueError as err:
@@ -159,3 +156,4 @@ for passport in passports:
     index += 1
 
 total_valid = len(passports_numbered)
+print(total_valid)
